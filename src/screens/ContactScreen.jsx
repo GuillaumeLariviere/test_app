@@ -1,31 +1,28 @@
-import { useEffect } from "react";
-import FormContact from "../components/generics/FormContact";
+import GenericForm from "../components/generics/FormContact";
+import FormInput from "../components/layouts/FormInput";
 
+const ContactScreen = () => {
 
-
-
-const ContactScreen =() =>{
-   
-
- function handleClick(evt){
-
-     evt.preventDefault();
-     const formEvt=evt.currentTarget.closest("form");
-     const formData = new FormData(formEvt)
-     const body = JSON.stringify(Object.fromEntries(formData.entries()));
-     const init = {
-        method: "post",
-        headers:{
-            "Content-Type": "application/json",
-        },
-        body
-    }
-    fetch("http://localhost:5000/contact",init).then(reps => reps.text()).then(console.log);
- }
-    return(
+    return (
         <>
             <h1>ContactScreen</h1>
-            <FormContact onClick = {handleClick}/>
+            <GenericForm method="post" endpoint="http://localhost:5000/contact" submitButtonText="Envoyer">
+                <FormInput htmlFor="email" labelText="votre mail" inputType="email" inputIdName="email" />
+                <FormInput htmlFor="firstName" labelText="Prénom" inputType="text" inputIdName="firstName" />
+                <FormInput htmlFor="lastName"  labelText="Nom" inputType="text" inputIdName="lastName" />
+                <div className="mb-3">
+                    <label htmlFor="message" className="form-label">
+                        Message
+                    </label>
+                    <textarea
+                        className="form-control"
+                        id="message"
+                        name="message"
+                        rows="5"
+
+                    ></textarea>
+                </div>
+            </GenericForm>
         </>
     );
 };
