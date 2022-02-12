@@ -30,7 +30,7 @@ const ContactScreen = () => {
                 />
                 <FormInput
                     className="mb-3"
-                    name="fullname"
+                    name="lastname"
                     labelText="Nom"
                     required={true}
                     invalidText="Saisr un nom"
