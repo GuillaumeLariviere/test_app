@@ -48,7 +48,7 @@ const {
            },
            body
        }
-       fetch(props.endpoint,init).then((response)=>{
+       fetch(endpoint,init).then((response)=>{
            return callback ? callback(response) : response;
        }).catch(console.log);
     };
